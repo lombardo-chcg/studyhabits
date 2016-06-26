@@ -5,9 +5,7 @@ var App = React.createClass({
   render: function() {
     return (
       <div>
-        <h1> hi </h1>
-        <Link to='/'>splash</Link>
-        <Link to='/login'>login</Link>
+        <NavBar />
         <RouteHandler {...this.props}/>
       </div>
     )
