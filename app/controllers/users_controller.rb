@@ -7,7 +7,7 @@ class UsersController < ApplicationController
       UserMailer.account_activation(@user).deliver_now
       render :json => { user: true }
     else
-      render :json => { errors: user.errors.full_messages }
+      render :json => { errors: @user.errors.full_messages }
     end
   end
 
