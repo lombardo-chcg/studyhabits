@@ -10,6 +10,10 @@ class User < ActiveRecord::Base
     self.activation_token
   end
 
+  def activated?
+    self.activated
+  end
+
   private
   def create_activation_token
     self.activation_token = SecureRandom.urlsafe_base64
