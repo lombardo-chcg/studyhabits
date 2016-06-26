@@ -1,7 +1,4 @@
 var NavBar = React.createClass({
-  hamburger: function() {
-    $(".button-collapse").sideNav()
-  },
   render: function() {
     return (
       <nav>

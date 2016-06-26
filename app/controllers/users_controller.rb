@@ -1,9 +1,10 @@
 class UsersController < ApplicationController
 
   def create
-    user = User.new(user_params)
+    @user = User.new(user_params)
 
-    if user.save
+    if @user.save
+      UserMailer.account_activation(@user).deliver_now
       render :json => { user: true }
     else
       render :json => { errors: user.errors.full_messages }
