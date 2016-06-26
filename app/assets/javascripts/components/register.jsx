@@ -1,5 +1,3 @@
-var browserHistory = ReactRouter.HashLocation;
-
 var Register = React.createClass({
   getInitialState: function() {
     return {
@@ -20,7 +18,7 @@ var Register = React.createClass({
       if (response.errors) {
         this.setState({ errors: response.errors })
       } else {
-        browserHistory.push('/post-registration')
+        this.props.onAction('post-registration')
       }
     }.bind(this))
   },

@@ -27,7 +27,7 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 gem 'bcrypt', '~> 3.1.7'
 
 gem 'react-rails'
-gem 'react-router-rails', '~>0.13.3.2'
+# gem 'react-router-rails', '~>0.13.3.2'
 gem 'simplecov', :require => false, :group => :test
 gem 'capybara'
 gem 'rails_12factor', group: :production
