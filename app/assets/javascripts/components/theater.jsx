@@ -7,12 +7,10 @@ var Theater = React.createClass({
   },
 
   componentWillMount: function() {
-    console.log('comonent will mount')
     this.getVideoId()
   },
 
   getVideoId: function() {
-    console.log('making ajax request')
     var request = $.ajax({
       url: '/theaters/serve',
       type: 'get'
@@ -23,10 +21,19 @@ var Theater = React.createClass({
         this.setState({ errors: response.errors })
       } else {
         this.setState({ video: response.video })
-        console.log('here', response.video.videoId)
-        console.log(this.state.video)
       }
     }.bind(this))
+  },
+
+  componentDidMount: function() {
+    this.startTimer();
+  },
+
+  startTimer: function() {
+    var handleTimerExpire = function() {
+      return this.props.onAction('user-show')
+    }.bind(this)
+    setTimeout(handleTimerExpire, this.props.studyInterval)
   },
 
   videoUrl: 'https://www.youtube.com/embed/',
@@ -47,6 +54,7 @@ var Theater = React.createClass({
             </div>
           </div>
           <p>{this.state.video.title}</p>
+          <p>{this.props.studyInterval}</p>
         </div>
       )
     }

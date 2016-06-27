@@ -2,6 +2,7 @@ var App = React.createClass({
   getInitialState: function() {
     return {
       view: 'splash',
+      studyInterval: undefined,
     }
   },
 
@@ -17,11 +18,13 @@ var App = React.createClass({
       case 'login':
         return <Login />
       case 'register':
-        return <Register onAction={this.changeView}/>
+        return <Register onAction={this.changeView} />
       case 'post-registration':
         return <PostRegistration />
       case 'theater':
-          return <Theater />
+          return <Theater onAction={this.changeView} studyInterval={this.state.studyInterval} />
+      case 'user-show':
+            return <UserShow onAction={this.changeView} />
     }
   },
 
