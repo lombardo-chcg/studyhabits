@@ -65,7 +65,7 @@ var Register = React.createClass({
               </div>
           </div>
 
-          <SubmitButton />
+          <SubmitButton text="register"/>
         </form>
       </div>
     )
