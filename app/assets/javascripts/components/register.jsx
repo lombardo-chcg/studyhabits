@@ -26,7 +26,7 @@ var Register = React.createClass({
   render: function() {
     return (
       <div className="row">
-        <div className="input-field col s8">
+        <div>
           <h3>Register</h3>
         </div>
 

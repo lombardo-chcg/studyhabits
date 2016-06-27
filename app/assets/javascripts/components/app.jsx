@@ -14,7 +14,7 @@ var App = React.createClass({
   showContent: function() {
     switch (this.state.view) {
       case 'splash':
-        return <SplashPage />
+        return <SplashPage onAction={this.changeView}/>
       case 'login':
         return <Login />
       case 'register':
