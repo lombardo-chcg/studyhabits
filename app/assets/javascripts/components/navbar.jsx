@@ -20,6 +20,7 @@ var NavBar = React.createClass({
             <li><a onClick={this.handleClick.bind(null, "user-show")}>profile</a></li>
           </ul>
           <ul className="side-nav navtext" id="mobile-demo">
+            <li><a onClick={this.handleClick.bind(null, "login")}>{this.props.userName}</a></li>
             <li><a onClick={this.handleClick.bind(null, "login")}>login</a></li>
             <li><a onClick={this.handleClick.bind(null, "register")}>register</a></li>
             <li><a onClick={this.handleClick.bind(null, "user-show")}>profile</a></li>

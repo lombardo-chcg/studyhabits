@@ -3,6 +3,8 @@ var App = React.createClass({
     return {
       view: 'splash',
       studyInterval: undefined,
+      userId: undefined,
+      userName: undefined
     }
   },
 
@@ -14,9 +16,9 @@ var App = React.createClass({
   showContent: function() {
     switch (this.state.view) {
       case 'splash':
-        return <SplashPage onAction={this.changeView}/>
+        return <SplashPage onAction={this.changeView} />
       case 'login':
-        return <Login />
+        return <Login onAction={this.changeView} />
       case 'register':
         return <Register onAction={this.changeView} />
       case 'post-registration':
@@ -32,7 +34,7 @@ var App = React.createClass({
   render: function() {
     return (
       <div>
-        <NavBar onAction={this.changeView}/>
+        <NavBar onAction={this.changeView} userName={this.state.userName}/>
         {this.showContent()}
       </div>
     )
