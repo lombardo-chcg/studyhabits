@@ -3,6 +3,9 @@ var App = React.createClass({
     return {
       view: 'splash',
       studyInterval: undefined,
+      userLoggedIn: false,
+      userId: undefined,
+      userName: undefined
     }
   },
 
@@ -14,25 +17,38 @@ var App = React.createClass({
   showContent: function() {
     switch (this.state.view) {
       case 'splash':
-        return <SplashPage />
+        return <SplashPage onAction={this.changeView} />
       case 'login':
-        return <Login />
+        return <Login onAction={this.changeView} />
       case 'register':
         return <Register onAction={this.changeView} />
       case 'post-registration':
         return <PostRegistration />
       case 'theater':
-          return <Theater onAction={this.changeView} studyInterval={this.state.studyInterval} />
+          return <Theater studyInterval={this.state.studyInterval} />
       case 'user-show':
-            return <UserShow onAction={this.changeView} />
+          return <UserShow onAction={this.changeView} />
+      case "logout":
+          this.logout()
     }
   },
 
+  logout: function() {
+    this.logoutServer();
+    window.location.href = "http://localhost:3000";
+  },
+
+  logoutServer: function() {
+    $.ajax({
+      url: '/sessions/destroy',
+      type: 'get'
+    }).done(function(response) {console.log(response)})
+  },
 
   render: function() {
     return (
       <div>
-        <NavBar onAction={this.changeView}/>
+        <NavBar onAction={this.changeView} userName={this.state.userName} />
         {this.showContent()}
       </div>
     )

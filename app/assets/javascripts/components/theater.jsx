@@ -2,12 +2,13 @@ var Theater = React.createClass({
   getInitialState: function() {
     return {
       errors: [],
-      video: {}
+      video: undefined
     }
   },
 
-  componentWillMount: function() {
+  componentDidMount: function() {
     this.getVideoId()
+    this.startTimer();
   },
 
   getVideoId: function() {
@@ -16,17 +17,12 @@ var Theater = React.createClass({
       type: 'get'
     });
     request.done(function(response) {
-      console.log(response.video)
       if (response.errors) {
         this.setState({ errors: response.errors })
       } else {
         this.setState({ video: response.video })
       }
     }.bind(this))
-  },
-
-  componentDidMount: function() {
-    this.startTimer();
   },
 
   startTimer: function() {
@@ -40,7 +36,7 @@ var Theater = React.createClass({
   autoPlay: '?autoplay=1',
 
   render: function() {
-    if (this.state.video === {}) {
+    if (this.state.video === undefined) {
       return <LoadingSpinner />
     } else {
       return (
