@@ -3,6 +3,7 @@ var App = React.createClass({
     return {
       view: 'splash',
       studyInterval: undefined,
+      userLoggedIn: false,
       userId: undefined,
       userName: undefined
     }
@@ -26,15 +27,28 @@ var App = React.createClass({
       case 'theater':
           return <Theater studyInterval={this.state.studyInterval} />
       case 'user-show':
-            return <UserShow onAction={this.changeView} />
+          return <UserShow onAction={this.changeView} />
+      case "logout":
+          this.logout()
     }
   },
 
+  logout: function() {
+    this.logoutServer();
+    window.location.href = "http://localhost:3000";
+  },
+
+  logoutServer: function() {
+    $.ajax({
+      url: '/sessions/destroy',
+      type: 'get'
+    }).done(function(response) {console.log(response)})
+  },
 
   render: function() {
     return (
       <div>
-        <NavBar onAction={this.changeView} userName={this.state.userName}/>
+        <NavBar onAction={this.changeView} userName={this.state.userName} />
         {this.showContent()}
       </div>
     )

@@ -4,10 +4,6 @@ var NavBar = React.createClass({
     $('.button-collapse').sideNav('hide')
   },
 
-  fuckOff: function() {
-    console.log('fuck')
-  },
-
   render: function() {
     return (
       <nav>
@@ -18,12 +14,14 @@ var NavBar = React.createClass({
             <li><a onClick={this.handleClick.bind(null, "login")}>login</a></li>
             <li><a onClick={this.handleClick.bind(null, "register")}>register</a></li>
             <li><a onClick={this.handleClick.bind(null, "user-show")}>profile</a></li>
+            <li><a onClick={this.handleClick.bind(null, "logout")}>logout</a></li>
           </ul>
           <ul className="side-nav navtext" id="mobile-demo">
             <li><a onClick={this.handleClick.bind(null, "login")}>{this.props.userName}</a></li>
             <li><a onClick={this.handleClick.bind(null, "login")}>login</a></li>
             <li><a onClick={this.handleClick.bind(null, "register")}>register</a></li>
             <li><a onClick={this.handleClick.bind(null, "user-show")}>profile</a></li>
+            <li><a onClick={this.handleClick.bind(null, "logout")}>logout</a></li>
           </ul>
         </div>
       </nav>

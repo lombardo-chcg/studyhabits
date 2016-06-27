@@ -20,6 +20,11 @@ class SessionsController < ApplicationController
    end
  end
 
+ def destroy
+  session[:user_id] = nil
+  render json: {logout: true}
+end
+
 private
  def session_params
    params.permit(:login, :password,)
