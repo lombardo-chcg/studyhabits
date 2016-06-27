@@ -20,6 +20,8 @@ var App = React.createClass({
         return <Register onAction={this.changeView}/>
       case 'post-registration':
         return <PostRegistration />
+      case 'theater':
+          return <Theater />
     }
   },
 
