@@ -2,7 +2,7 @@ var Theater = React.createClass({
   getInitialState: function() {
     return {
       errors: [],
-      playlist: undefined,
+      playlist: [],
       videoCounter: 0,
       currentVideoUrl: undefined,
       currentVideoDuration: undefined,
@@ -28,6 +28,7 @@ var Theater = React.createClass({
         this.setState({ errors: response.errors })
       } else {
         this.setState({ playlist: response.playlistData })
+        $('#timer').animate({ width: '100%'}, this.props.studyInterval)
         this.playVideo()
       }
     }.bind(this));
@@ -74,14 +75,20 @@ var Theater = React.createClass({
   },
 
   goBack: function() {
-    this.setState({playlist: undefined})
+    console.log('before', this.state.playlist)
+    this.setState({ playlist: [] }, this.clearTimersAndLeavePage)
+    console.log('after', this.state.playlist)
+  },
+
+  clearTimersAndLeavePage: function() {
     clearTimeout(this.videoTimeout)
     clearTimeout(this.redirectTimeout)
+    console.log('bye bye')
     this.props.onAction('user-show')
   },
 
   render: function() {
-    if (this.state.playlist === undefined) {
+    if (this.state.playlist.length === 0) {
       return <div>
         <ShapesSpinner />
         <p>fetching you some awesome content...this might take a moment.</p>
@@ -101,6 +108,8 @@ var Theater = React.createClass({
           <p>{this.state.currentVideoDuration}</p>
           <a onClick={this.skipVideo}><SubmitButton text={'skip this video'} /></a>
           <a onClick={this.goBack}><SubmitButton text={'stop and go back'} /></a>
+          <br />  <br />  <br />  <br />
+            <div id='timer'></div>
         </div>
       )
     }
