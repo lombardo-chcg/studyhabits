@@ -16,8 +16,8 @@ class TheatersController < ApplicationController
     end
 
     video = Yt::Video.new id:  'iwew9TzWY3M'
-    # playlist = Yt::Playlist.new id: 'PL-mSV3w33pTTEELPX-KFH2WjWlUFMYKcJ' #mozart
-    playlist = Yt::Playlist.new id: 'PL6880827AEBBC2645' #short funny videos
+    playlist = Yt::Playlist.new id: 'PL-mSV3w33pTTEELPX-KFH2WjWlUFMYKcJ' #mozart strings
+    # playlist = Yt::Playlist.new id: 'PL6880827AEBBC2645' #mozart 
 
     videos = {}
     videos["playlistData"] = []

@@ -2,7 +2,7 @@ var Theater = React.createClass({
   getInitialState: function() {
     return {
       errors: [],
-      playlist: undefined,
+      playlist: [],
       videoCounter: 0,
       currentVideoUrl: undefined,
       currentVideoDuration: undefined,
@@ -28,6 +28,7 @@ var Theater = React.createClass({
         this.setState({ errors: response.errors })
       } else {
         this.setState({ playlist: response.playlistData })
+        $('#timer').animate({ width: '100%'}, this.props.studyInterval)
         this.playVideo()
       }
     }.bind(this));
@@ -63,26 +64,34 @@ var Theater = React.createClass({
     var handleTimerExpire = function() {
       return this.props.onAction('user-show')
     }.bind(this)
-    this.redirectTimeout = setTimeout(handleTimerExpire, this.props.studyInterval);
+    this.redirectTimeout = setTimeout(this.goBack, this.props.studyInterval);
     this.redirectTimeout
   },
 
   skipVideo: function() {
     console.log(' hi from skippy'    )
-    this.setState({videoCounter: (this.state.videoCounter + 1)});
-    this.playVideo();
+    this.setState({
+      videoCounter: (this.state.videoCounter + 1)},
+      this.playVideo
+    );
   },
 
   goBack: function() {
-    this.setState({playlist: undefined})
+    this.setState({ playlist: [] }, this.clearTimersAndLeavePage)
+  },
+
+  clearTimersAndLeavePage: function() {
     clearTimeout(this.videoTimeout)
     clearTimeout(this.redirectTimeout)
     this.props.onAction('user-show')
   },
 
   render: function() {
-    if (this.state.playlist === undefined) {
-      return <LoadingSpinner />
+    if (this.state.playlist.length === 0) {
+      return <div>
+        <ShapesSpinner />
+        <p>fetching you some awesome content...this might take a moment.</p>
+      </div>
     } else {
       return (
         <div className="row">
@@ -98,6 +107,8 @@ var Theater = React.createClass({
           <p>{this.state.currentVideoDuration}</p>
           <a onClick={this.skipVideo}><SubmitButton text={'skip this video'} /></a>
           <a onClick={this.goBack}><SubmitButton text={'stop and go back'} /></a>
+          <br />  <br />  <br />  <br />
+            <div id='timer'></div>
         </div>
       )
     }
