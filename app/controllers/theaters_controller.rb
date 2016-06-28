@@ -12,4 +12,8 @@ class TheatersController < ApplicationController
                                 duration: video.duration } }
   end
 
+  # irb(main):047:0> pl.playlist_items.each do |x|
+  # irb(main):048:1* p x.snippet.resourceId.videoId
+  # irb(main):049:1> end
+
 end

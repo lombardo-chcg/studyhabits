@@ -8,12 +8,11 @@ var ErrorsList = React.createClass({
       return <div></div>
     } else {
       var children = [];
-      for (var key in this.props.errors) {
-        var error = this.props.errors[key]
-        error.key = key
+      for (var index in this.props.errors) {
+        var error = this.props.errors[index]
 
         children.push(
-          <ErrorsListItem error={error} key={key} />
+          <ErrorsListItem error={error} key={index} />
         )
       }
     return children;
