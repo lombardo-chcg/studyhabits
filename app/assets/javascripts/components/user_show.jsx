@@ -10,8 +10,10 @@ var UserShow = React.createClass({
   render: function() {
     return (
       <div className="row">
-        <p>enter study interval</p>
+        <SubmitButton text={'start classic pomodora session (25min)'}/>
         <form onSubmit={this.handleFormSubmit} className="col s12">
+
+          <p>or enter custom study interval</p>
 
           <div className="row">
             <div className="input-field col s8">
