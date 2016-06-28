@@ -64,26 +64,25 @@ var Theater = React.createClass({
     var handleTimerExpire = function() {
       return this.props.onAction('user-show')
     }.bind(this)
-    this.redirectTimeout = setTimeout(handleTimerExpire, this.props.studyInterval);
+    this.redirectTimeout = setTimeout(this.goBack, this.props.studyInterval);
     this.redirectTimeout
   },
 
   skipVideo: function() {
     console.log(' hi from skippy'    )
-    this.setState({videoCounter: (this.state.videoCounter + 1)});
-    this.playVideo();
+    this.setState({
+      videoCounter: (this.state.videoCounter + 1)},
+      this.playVideo
+    );
   },
 
   goBack: function() {
-    console.log('before', this.state.playlist)
     this.setState({ playlist: [] }, this.clearTimersAndLeavePage)
-    console.log('after', this.state.playlist)
   },
 
   clearTimersAndLeavePage: function() {
     clearTimeout(this.videoTimeout)
     clearTimeout(this.redirectTimeout)
-    console.log('bye bye')
     this.props.onAction('user-show')
   },
 
