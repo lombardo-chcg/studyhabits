@@ -22,6 +22,7 @@ var UserShow = React.createClass({
 
           <SubmitButton text={"go"}/>
         </form>
+        <SetPreferencesForm />
       </div>
     )
   }

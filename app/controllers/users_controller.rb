@@ -11,6 +11,14 @@ class UsersController < ApplicationController
     end
   end
 
+  def set_preferences
+    @user = current_user
+    params.each do |k,v|
+      puts "#{k}, #{v}"
+    end
+
+  end
+
 
   private
   def user_params

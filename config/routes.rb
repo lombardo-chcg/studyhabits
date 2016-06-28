@@ -6,6 +6,7 @@ Rails.application.routes.draw do
   get '/sessions/destroy' => 'sessions#destroy'
 
   post '/users' => 'users#create'
+  post '/users/preferences' => 'users#set_preferences'
 
   resources :account_activations, only: [:edit]
 

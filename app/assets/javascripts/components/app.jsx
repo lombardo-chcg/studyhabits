@@ -1,7 +1,7 @@
 var App = React.createClass({
   getInitialState: function() {
     return {
-      view: 'splash',
+      view: 'setPreferencesForm',
       studyInterval: undefined,
       userLoggedIn: false,
       userId: undefined,
@@ -30,6 +30,8 @@ var App = React.createClass({
           return <UserShow onAction={this.changeView} />
       case "logout":
           this.logout()
+      case "setPreferencesForm":
+        return <SetPreferencesForm onAction={this.changeView} userId={this.state.userId} />
     }
   },
 
