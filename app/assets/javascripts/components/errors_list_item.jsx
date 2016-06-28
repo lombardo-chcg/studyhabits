@@ -1,6 +1,6 @@
 var ErrorsListItem = React.createClass({
   render: function() {
-    return <li key={this.props.key}>
+    return <li>
       {this.props.error}
     </li>
   }

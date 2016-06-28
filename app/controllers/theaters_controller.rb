@@ -6,10 +6,18 @@ class TheatersController < ApplicationController
     end
     # grab a video for the current user: @user = current_user
     video = Yt::Video.new id:  'iwew9TzWY3M'
-    # make sure the video hasn't been deleted video.deleted?
-    render :json => { video: {  videoId: video.id,
-                                title: video.title,
-                                duration: video.duration } }
+    if video_valid?(video)
+      render :json => { video: {  videoId: video.id,
+                                  title: video.title,
+                                  duration: video.duration } }
+    else
+      render :json => {video: 'invalid'}
+    end
   end
+
+  # mozart string quartets
+  # array = []
+  # pl = Yt::Playlist.new id: 'PL-mSV3w33pTTEELPX-KFH2WjWlUFMYKcJ'
+  # pl.playlist_items.each {|vid| array << vid.snippet.data['resourceId']['videoId']}
 
 end
