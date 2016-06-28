@@ -81,7 +81,7 @@ var SetPreferencesForm = React.createClass({
               <div className="card light-blue darken-1">
                 <div className="card-content white-text">
                   <span className="card-title">Electronic Music</span>
-                  <CheckBox label={"I'm Not Picky"}             tag={"preferences[classical_notPicky]"}/>
+                  <CheckBox label={"I'm Not Picky"}             tag={"preferences[electronic_notPicky]"}/>
                   <CheckBox label={"Active/High Energy/Groovy"} tag={"preferences[electronic_active]"}/>
                   <CheckBox label={"Dark, Atmospheric"}         tag={"preferences[electronic_dark]"}/>
                   <CheckBox label={"Uplifting"}                 tag={"preferences[electronic_uplifting]"}/>
