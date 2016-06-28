@@ -25,7 +25,7 @@ var App = React.createClass({
       case 'post-registration':
         return <PostRegistration />
       case 'theater':
-          return <Theater studyInterval={this.state.studyInterval} />
+          return <Theater onAction={this.changeView} studyInterval={this.state.studyInterval} />
       case 'user-show':
           return <UserShow onAction={this.changeView} />
       case "logout":

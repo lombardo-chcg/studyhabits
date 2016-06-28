@@ -2,16 +2,23 @@ var Theater = React.createClass({
   getInitialState: function() {
     return {
       errors: [],
-      video: undefined
+      playlist: undefined,
+      videoCounter: 0,
+      currentVideoUrl: undefined,
+      currentVideoDuration: undefined,
+      currentVideoTitle: undefined,
     }
   },
 
+  videoTimeout: undefined,
+  redirectTimeout: undefined,
+
   componentDidMount: function() {
-    this.getVideoId()
-    this.startTimer();
+    this.getContent();
+    this.startRedirectTimer();
   },
 
-  getVideoId: function() {
+  getContent: function() {
     var request = $.ajax({
       url: '/theaters/serve',
       type: 'get'
@@ -20,23 +27,61 @@ var Theater = React.createClass({
       if (response.errors) {
         this.setState({ errors: response.errors })
       } else {
-        this.setState({ video: response.video })
+        this.setState({ playlist: response.playlistData })
+        this.playVideo()
       }
-    }.bind(this))
+    }.bind(this));
   },
 
-  startTimer: function() {
+  playVideo: function() {
+    if (this.state.playlist != undefined) {
+      console.log('inside if for playvideo')
+      counter = this.state.videoCounter;
+      this.setState({
+          currentVideoUrl: this.state.playlist[counter].url,
+          currentVideoTitle: this.state.playlist[counter].title,
+          currentVideoDuration: (this.state.playlist[counter].duration * 1050)
+      });
+      this.startVideoTimer();
+    }
+  },
+
+  startVideoTimer: function() {
+    if (this.state.playlist != undefined) {
+      console.log('inside if for start vid time')
+      counter = this.state.videoCounter;
+      var loadNextVideo = function() {
+        this.setState({videoCounter: (this.state.videoCounter + 1)})
+        this.playVideo()
+      }.bind(this);
+      this.videoTimeout = setTimeout(loadNextVideo, this.state.currentVideoDuration);
+      this.videoTimeout
+    }
+  },
+
+  startRedirectTimer: function() {
     var handleTimerExpire = function() {
       return this.props.onAction('user-show')
     }.bind(this)
-    setTimeout(handleTimerExpire, this.props.studyInterval)
+    this.redirectTimeout = setTimeout(handleTimerExpire, this.props.studyInterval);
+    this.redirectTimeout
   },
 
-  videoUrl: 'https://www.youtube.com/embed/',
-  autoPlay: '?autoplay=1',
+  skipVideo: function() {
+    console.log(' hi from skippy'    )
+    this.setState({videoCounter: (this.state.videoCounter + 1)});
+    this.playVideo();
+  },
+
+  goBack: function() {
+    this.setState({playlist: undefined})
+    clearTimeout(this.videoTimeout)
+    clearTimeout(this.redirectTimeout)
+    this.props.onAction('user-show')
+  },
 
   render: function() {
-    if (this.state.video === undefined) {
+    if (this.state.playlist === undefined) {
       return <LoadingSpinner />
     } else {
       return (
@@ -45,12 +90,14 @@ var Theater = React.createClass({
             <div className="video-container">
               <iframe width="100"
                       height="100"
-                      src={this.videoUrl+this.state.video.videoId+this.autoPlay}>
+                      src={this.state.currentVideoUrl}>
               </iframe>
             </div>
           </div>
-          <p>{this.state.video.title}</p>
-          <p>{this.props.studyInterval}</p>
+          <p>{this.state.currentVideoTitle}</p>
+          <p>{this.state.currentVideoDuration}</p>
+          <a onClick={this.skipVideo}><SubmitButton text={'skip this video'} /></a>
+          <a onClick={this.goBack}><SubmitButton text={'stop and go back'} /></a>
         </div>
       )
     }
