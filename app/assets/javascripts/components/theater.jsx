@@ -82,7 +82,10 @@ var Theater = React.createClass({
 
   render: function() {
     if (this.state.playlist === undefined) {
-      return <LoadingSpinner />
+      return <div>
+        <ShapesSpinner />
+        <p>fetching you some awesome content...this might take a moment.</p>
+      </div>
     } else {
       return (
         <div className="row">
