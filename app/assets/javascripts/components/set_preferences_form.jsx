@@ -18,6 +18,7 @@ var SetPreferencesForm = React.createClass({
         this.setState({ errors: response.errors })
       } else {
         console.log(response)
+        this.props.onAction('user-show', {userPreferences: response.userPreferences})
       }
     }.bind(this))
   },
@@ -38,7 +39,7 @@ var SetPreferencesForm = React.createClass({
                 <div className="card-content white-text">
                   <span className="card-title">Skip This step</span>
                   <p>we will give you a variety of goodies</p>
-                  <input type="hidden" name={"no_preference[no_preferences]"} value="on" />
+                  <input type="hidden" name={"no_preferences[no_preferences]"} value="on" />
                     <SubmitButton text={"no preferences]"} />
                   </div>
                 </div>

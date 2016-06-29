@@ -1,11 +1,12 @@
 var App = React.createClass({
   getInitialState: function() {
     return {
-      view: 'setPreferencesForm',
+      view: 'splash',
       studyInterval: undefined,
       userLoggedIn: false,
       userId: undefined,
-      userName: undefined
+      userName: undefined,
+      userPreferences: []
     }
   },
 
@@ -24,14 +25,26 @@ var App = React.createClass({
         return <Register onAction={this.changeView} />
       case 'post-registration':
         return <PostRegistration />
+      case 'enterTheaterForm':
+        return <EnterTheaterForm
+          onAction={this.changeView}
+          userPreferences={this.state.userPreferences} />
       case 'theater':
-          return <Theater onAction={this.changeView} studyInterval={this.state.studyInterval} />
-      case 'user-show':
-          return <UserShow onAction={this.changeView} />
-      case "logout":
-          this.logout()
+        return <Theater
+          onAction={this.changeView}
+          studyInterval={this.state.studyInterval} />
+        case 'user-show':
+          return <UserShow
+            onAction={this.changeView}
+            userName={this.state.userName}
+            userPreferences={this.state.userPreferences} />
       case "setPreferencesForm":
-        return <SetPreferencesForm onAction={this.changeView} userId={this.state.userId} />
+        return <SetPreferencesForm
+          onAction={this.changeView}
+          userId={this.state.userId}
+          userPreferences={this.state.userPreferences} />
+      case "logout":
+        this.logout()
     }
   },
 
@@ -50,7 +63,11 @@ var App = React.createClass({
   render: function() {
     return (
       <div>
-        <NavBar onAction={this.changeView} userName={this.state.userName} />
+        <NavBar
+          onAction={this.changeView}
+          userName={this.state.userName}
+          userLoggedIn={this.state.userLoggedIn}
+        />
         {this.showContent()}
       </div>
     )

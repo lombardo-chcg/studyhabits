@@ -17,6 +17,7 @@ var LoginForm = React.createClass ({
         if (response.errors) {
           this.setState({ errors: response.errors })
         } else {
+          console.log(response)
           this.props.onAction('user-show', { userId: response.userId,
                                              userName: response.userName,
                                              userLoggedIn: true
