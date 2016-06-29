@@ -33,11 +33,11 @@ var App = React.createClass({
         return <Theater
           onAction={this.changeView}
           studyInterval={this.state.studyInterval} />
-        case 'user-show':
-          return <UserShow
-            onAction={this.changeView}
-            userName={this.state.userName}
-            userPreferences={this.state.userPreferences} />
+      case 'user-show':
+        return <UserShow
+          onAction={this.changeView}
+          userName={this.state.userName}
+          userPreferences={this.state.userPreferences} />
       case "setPreferencesForm":
         return <SetPreferencesForm
           onAction={this.changeView}
