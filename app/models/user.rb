@@ -17,7 +17,18 @@ class User < ActiveRecord::Base
     self.activated
   end
 
+  def get_preferences
+    preferences = []
+    if user.preferences.length > 0
+      user.preferred_tags.each do |preference|
+        preferences << preference.description
+      end
+    end
+    preferences
+  end
+
   private
+
   def create_activation_token
     self.activation_token = SecureRandom.urlsafe_base64
   end

@@ -13,12 +13,15 @@
 ## Views & Components
 * Register (create user)
 * * register form
+* Post-registration click page
 * Login (session new)
 * * login form
 * Set Preferences
 * * preferences selection
 * Profile (show user)
 * Theater
+* Edit Preferences
+* About
 
 ## Component Library
 
