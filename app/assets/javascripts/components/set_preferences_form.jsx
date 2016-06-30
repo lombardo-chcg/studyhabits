@@ -58,7 +58,7 @@ var SetPreferencesForm = React.createClass({
                 <div className="card-content white-text">
                   <span className="card-title">Classical Music</span>
                   <br />
-                  <CheckBox isChecked={true} label={"I'm Not Picky"}           tag={"preferences[classical_notPicky]"}/>
+                  <CheckBox isChecked={true} label={"I'm Not Picky"} tag={"preferences[classical_notPicky]"}/>
                   <CheckBox label={"Strings & Chamber Music"} tag={"preferences[classical_quartets]"}/>
                   <CheckBox label={"Piano"}                   tag={"preferences[classical_piano]"}/>
                   <CheckBox label={"Piano + Strings together"}tag={"preferences[classical_concerto]"}/>

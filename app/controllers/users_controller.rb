@@ -13,6 +13,8 @@ class UsersController < ApplicationController
 
   def set_preferences
     @user = current_user
+    puts "here!"
+    p @user
     if !params[:preferences]
       render :json => { errors: ['please select at least one option to continue'] }
     elsif params[:preferences]
@@ -25,6 +27,7 @@ class UsersController < ApplicationController
 
   def get_preferences
     @user = current_user
+    tags = get_grouped_tags
     tags.each do |tag_grouping|
       tag_grouping[1].each do |tag|
         if @user.has_preference?(tag["sku"])

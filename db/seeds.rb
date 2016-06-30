@@ -28,7 +28,7 @@ Tag.create!(sku: 'modern_newAge', description: 'New Age Piano',group: "modern")
 Tag.create!(sku: 'electronic_notPicky', description: "Electronic Music - I'm Not Picky",group: "electronic")
 Tag.create!(sku: 'electronic_active', description: 'Electronic - Active/High Energy/Groovy',group: "electronic")
 Tag.create!(sku: 'electronic_dark', description: 'Electronic - Dark, Atmospheric',group: "electronic")
-Tag.create!(sku: 'electronic_dark', description: 'Electronic - Uplifting',group: "electronic")
+Tag.create!(sku: 'electronic_uplifting', description: 'Electronic - Uplifting',group: "electronic")
 
 Tag.create!(sku: 'sounds_notPicky', description: "Non-musical sounds - I'm Not Picky",group: "sounds")
 Tag.create!(sku: 'sounds_whiteNoise', description: 'White Noise',group: "sounds")

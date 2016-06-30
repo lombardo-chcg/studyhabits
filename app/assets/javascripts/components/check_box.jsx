@@ -7,23 +7,16 @@ var CheckBox = React.createClass({
 
     componentDidMount: function() {
       if (this.props.isChecked) {
-        this.setState({isChecked: true})
+        this.setState({isChecked: this.props.isChecked})
       }
     },
 
     handleCheckboxChange: function(event) {
-        console.log("checkbox changed!", event);
         this.setState({isChecked: event.target.checked});
     },
 
     toggleIsChecked: function() {
-        console.log("toggling isChecked value!");
         this.setState({isChecked: !this.state.isChecked});
-    },
-
-    handleButtonClick: function(event) {
-        console.log("button was pressed!", event);
-        this.toggleIsChecked();
     },
 
     render: function() {
@@ -32,7 +25,7 @@ var CheckBox = React.createClass({
             <input type="checkbox"
               className="filled-in"
               id={this.props.tag}
-              name={this.props.tag}
+              name={'preferences[' + this.props.tag +']'}
               onChange={this.handleCheckboxChange}
               checked={this.state.isChecked}
             />

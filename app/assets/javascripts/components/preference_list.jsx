@@ -7,7 +7,6 @@ var PreferenceList = React.createClass({
       })
       return children
     } else {
-      console.log('hi')
       return <li><SubmitButton text={'set your preferences'} /></li>
     }
   },
