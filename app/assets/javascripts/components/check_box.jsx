@@ -5,6 +5,12 @@ var CheckBox = React.createClass({
         };
     },
 
+    componentDidMount: function() {
+      if (this.props.isChecked) {
+        this.setState({isChecked: true})
+      }
+    },
+
     handleCheckboxChange: function(event) {
         console.log("checkbox changed!", event);
         this.setState({isChecked: event.target.checked});
@@ -22,7 +28,7 @@ var CheckBox = React.createClass({
 
     render: function() {
         return (
-          <p>
+          <div className='preferences-checkbox'>
             <input type="checkbox"
               className="filled-in"
               id={this.props.tag}
@@ -30,8 +36,8 @@ var CheckBox = React.createClass({
               onChange={this.handleCheckboxChange}
               checked={this.state.isChecked}
             />
-          <label htmlFor={this.props.tag}>{this.props.label}</label>
-          </p>
+            <label htmlFor={this.props.tag}>{this.props.label}</label>
+          </div>
         );
     }
 });
