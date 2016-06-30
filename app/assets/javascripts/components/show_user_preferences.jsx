@@ -1,7 +1,17 @@
 var ShowUserPreferences = React.createClass({
+  getInitialState: function() {
+    return {
+      userPreferences: []
+    }
+  },
+
   render: function() {
     return (
-      <h1>preferences</h1>
+      <div>
+        <h3>Your current Preferences</h3>
+        <a>update</a>
+        <PreferenceList userPreferences={this.props.userPreferences}/>
+      </div>
     )
   }
 })

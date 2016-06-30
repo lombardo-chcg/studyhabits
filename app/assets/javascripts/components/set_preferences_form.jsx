@@ -107,7 +107,7 @@ var SetPreferencesForm = React.createClass({
                   <CheckBox label={"Rain Forest"}             tag={"preferences[sounds_rainForest]"}/>
                   <CheckBox label={"Ocean"}                   tag={"preferences[sounds_ocean]"}/>
                   <CheckBox label={"Rain & Storms"}           tag={"preferences[sounds_storm]"}/>
-                  <CheckBox label={"Flowing Water / River"}   tag={"preferences[ounds_flowingWater]"}/>
+                  <CheckBox label={"Flowing Water / River"}   tag={"preferences[sounds_flowingWater]"}/>
                 </div>
               </div>
             </div>

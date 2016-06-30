@@ -5,7 +5,7 @@ var UserShow = React.createClass({
       return <SetPreferencesForm onAction={this.props.onAction} />
     } else {
       console.log('has pref')
-      return <ShowUserPreferences />
+      return <ShowUserPreferences userPreferences={this.props.userPreferences}/>
     }
   },
 
