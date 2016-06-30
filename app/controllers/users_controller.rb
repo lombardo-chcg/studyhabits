@@ -23,6 +23,20 @@ class UsersController < ApplicationController
     end
   end
 
+  def get_preferences
+    @user = current_user
+    tags.each do |tag_grouping|
+      tag_grouping[1].each do |tag|
+        if @user.has_preference?(tag["sku"])
+          tag["isChecked"] = true
+        else
+          tag["isChecked"] = false
+        end
+      end
+    end
+    render :json => {preferences: tags}
+  end
+
 
   private
   def user_params

@@ -33,6 +33,13 @@ class User < ActiveRecord::Base
     end
   end
 
+  def has_preference?(tag)
+    if self.preferred_tags.find_by(sku: tag)
+      return true
+    end
+    false
+  end
+
   private
 
   def create_activation_token
