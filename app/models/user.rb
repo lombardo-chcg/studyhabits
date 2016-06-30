@@ -33,6 +33,11 @@ class User < ActiveRecord::Base
     end
   end
 
+  def update_preferences
+    # need to handle adding AND deleting of preferences
+  end
+
+
   def has_preference?(tag)
     if self.preferred_tags.find_by(sku: tag)
       return true
