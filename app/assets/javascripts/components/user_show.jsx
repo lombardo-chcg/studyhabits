@@ -1,11 +1,12 @@
 var UserShow = React.createClass({
   userPreferences: function() {
     if (this.props.userPreferences.length === 0) {
-      console.log('no pref')
-      return <SetPreferencesForm onAction={this.props.onAction} />
+      return <SetPreferencesForm
+        onAction={this.props.onAction} />
     } else {
-      console.log('has pref')
-      return <ShowUserPreferences />
+      return <ShowUserPreferences
+        onAction={this.props.onAction}
+        userPreferences={this.props.userPreferences}/>
     }
   },
 

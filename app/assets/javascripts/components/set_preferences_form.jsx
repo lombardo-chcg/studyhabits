@@ -39,7 +39,7 @@ var SetPreferencesForm = React.createClass({
                 <div className="card-content white-text">
                   <span className="card-title">Skip This step</span>
                   <p>we will give you a variety of goodies</p>
-                  <input type="hidden" name={"no_preferences[no_preferences]"} value="on" />
+                  <input type="hidden" name={"preferences[no_preferences]"} value="on" />
                     <SubmitButton text={"no preferences]"} />
                   </div>
                 </div>
@@ -53,22 +53,26 @@ var SetPreferencesForm = React.createClass({
         <form onSubmit={this.handleFormSubmit}>
 
           <div className="row">
-            <div className="col s12 m6">
+            <div className="col s12 m12">
               <div className="card light-blue darken-1">
                 <div className="card-content white-text">
                   <span className="card-title">Classical Music</span>
-                  <CheckBox label={"I'm Not Picky"}           tag={"preferences[classical_notPicky]"}/>
+                  <br />
+                  <CheckBox isChecked={true} label={"I'm Not Picky"} tag={"preferences[classical_notPicky]"}/>
                   <CheckBox label={"Strings & Chamber Music"} tag={"preferences[classical_quartets]"}/>
                   <CheckBox label={"Piano"}                   tag={"preferences[classical_piano]"}/>
                   <CheckBox label={"Piano + Strings together"}tag={"preferences[classical_concerto]"}/>
                 </div>
               </div>
             </div>
+          </div>
 
-            <div className="col s12 m6">
+          <div className="row">
+            <div className="col s12 m12">
               <div className="card light-blue darken-1">
                 <div className="card-content white-text">
                   <span className="card-title">New Age & Modern Instrumental Music</span>
+                  <br />
                   <CheckBox label={"I'm Not Picky"}           tag={"preferences[modern_notPicky]"}/>
                   <CheckBox label={"Dreamy Classical Piano"}  tag={"preferences[modern_dreamyClassical]"}/>
                   <CheckBox label={"New Age Piano"}           tag={"preferences[modern_newAge]"}/>
@@ -78,10 +82,11 @@ var SetPreferencesForm = React.createClass({
           </div>
 
           <div className="row">
-            <div className="col s12 m6">
+            <div className="col s12 m12">
               <div className="card light-blue darken-1">
                 <div className="card-content white-text">
                   <span className="card-title">Electronic Music</span>
+                  <br />
                   <CheckBox label={"I'm Not Picky"}             tag={"preferences[electronic_notPicky]"}/>
                   <CheckBox label={"Active/High Energy/Groovy"} tag={"preferences[electronic_active]"}/>
                   <CheckBox label={"Dark, Atmospheric"}         tag={"preferences[electronic_dark]"}/>
@@ -89,17 +94,20 @@ var SetPreferencesForm = React.createClass({
                 </div>
               </div>
             </div>
+          </div>
 
-            <div className="col s12 m6">
+          <div className="row">
+            <div className="col s12 m12">
               <div className="card light-blue darken-1">
                 <div className="card-content white-text">
                   <span className="card-title">Non-musical Options</span>
+                  <br />
                   <CheckBox label={"I'm Not Picky"}           tag={"preferences[sounds_notPicky]"}/>
                   <CheckBox label={"White Noise"}             tag={"preferences[sounds_whiteNoise]"}/>
                   <CheckBox label={"Rain Forest"}             tag={"preferences[sounds_rainForest]"}/>
                   <CheckBox label={"Ocean"}                   tag={"preferences[sounds_ocean]"}/>
                   <CheckBox label={"Rain & Storms"}           tag={"preferences[sounds_storm]"}/>
-                  <CheckBox label={"Flowing Water / River"}   tag={"preferences[ounds_flowingWater]"}/>
+                  <CheckBox label={"Flowing Water / River"}   tag={"preferences[sounds_flowingWater]"}/>
                 </div>
               </div>
             </div>

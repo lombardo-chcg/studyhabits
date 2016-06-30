@@ -13,20 +13,31 @@ class UsersController < ApplicationController
 
   def set_preferences
     @user = current_user
-    if !params[:no_preferences] && !params[:preferences]
-      render :json => { errors: ['no preferences were selected'] }
-    elsif params[:no_preferences]
-      tag_sku = params[:no_preferences]
-      @user.preferences.create(tag_id: Tag.find_by(sku: tag_sku).id)
-      render :json => { userPreferences: @user.get_preferences }
+    puts "here!"
+    p @user
+    if !params[:preferences]
+      render :json => { errors: ['please select at least one option to continue'] }
     elsif params[:preferences]
-      params[:preferences].each do |preference, status|
-        @user.preferences.create(tag_id: Tag.find_by(sku: preference).id)
-      end
+      @user.set_preferences(params[:preferences].keys)
       render :json => { userPreferences: @user.get_preferences }
     else
       render :json => {errors: ['Error code 867-5309']}
     end
+  end
+
+  def get_preferences
+    @user = current_user
+    tags = get_grouped_tags
+    tags.each do |tag_grouping|
+      tag_grouping[1].each do |tag|
+        if @user.has_preference?(tag["sku"])
+          tag["isChecked"] = true
+        else
+          tag["isChecked"] = false
+        end
+      end
+    end
+    render :json => {preferences: tags}
   end
 
 

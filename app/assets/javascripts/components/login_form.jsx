@@ -20,7 +20,8 @@ var LoginForm = React.createClass ({
           console.log(response)
           this.props.onAction('user-show', { userId: response.userId,
                                              userName: response.userName,
-                                             userLoggedIn: true
+                                             userLoggedIn: true,
+                                             userPreferences: response.userPreferences
                                            })
         }
       }.bind(this))

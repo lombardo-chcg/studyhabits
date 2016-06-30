@@ -19,12 +19,30 @@ class User < ActiveRecord::Base
 
   def get_preferences
     preferences = []
-    if user.preferences.length > 0
-      user.preferred_tags.each do |preference|
+    if self.preferences.length > 0
+      self.preferred_tags.each do |preference|
         preferences << preference.description
       end
     end
     preferences
+  end
+
+  def set_preferences(preferences_array)
+    preferences_array.each do |preference|
+      self.preferences.create(tag_id: Tag.find_by(sku: preference).id)
+    end
+  end
+
+  def update_preferences
+    # need to handle adding AND deleting of preferences
+  end
+
+
+  def has_preference?(tag)
+    if self.preferred_tags.find_by(sku: tag)
+      return true
+    end
+    false
   end
 
   private

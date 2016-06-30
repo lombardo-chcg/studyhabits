@@ -43,6 +43,8 @@ var App = React.createClass({
           onAction={this.changeView}
           userId={this.state.userId}
           userPreferences={this.state.userPreferences} />
+        case "updateUserPreferences":
+        return <UpdateUserPreferences onAction={this.changeView} />  
       case "logout":
         this.logout()
     }

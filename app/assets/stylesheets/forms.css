@@ -1,0 +1,11 @@
+.preferences-checkbox {
+  display: inline-block;
+  border: 1px solid grey;
+  border-radius: 5px;
+  margin: 2%;
+  padding: 2%
+}
+
+[type="checkbox"] + label {
+  color: whitesmoke;
+}

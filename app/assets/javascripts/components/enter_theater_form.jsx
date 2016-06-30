@@ -24,7 +24,7 @@ var EnterTheaterForm = React.createClass({
 
           <SubmitButton text={"go"}/>
         </form>
-        <ShowUserPreferences preferences={this.props.userPreferences} />
+        <ShowUserPreferences userPreferences={this.props.userPreferences} />
       </div>
     )
   }
