@@ -1,7 +1,7 @@
 var UserShow = React.createClass({
   userPreferences: function() {
     if (this.props.userPreferences.length === 0) {
-      return <SetPreferencesForm
+      return <UpdateUserPreferences
         onAction={this.props.onAction} />
     } else {
       return <ShowUserPreferences

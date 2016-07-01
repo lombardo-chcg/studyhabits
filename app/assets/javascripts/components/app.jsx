@@ -11,8 +11,8 @@ var App = React.createClass({
   },
 
   changeView: function(newView, options = {}) {
-    this.setState({view: newView});
     this.setState(options);
+    this.setState({view: newView});
   },
 
   showContent: function() {
@@ -44,7 +44,7 @@ var App = React.createClass({
           userId={this.state.userId}
           userPreferences={this.state.userPreferences} />
         case "updateUserPreferences":
-        return <UpdateUserPreferences onAction={this.changeView} />  
+        return <UpdateUserPreferences onAction={this.changeView} />
       case "logout":
         this.logout()
     }

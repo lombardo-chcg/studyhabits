@@ -28,9 +28,14 @@ class User < ActiveRecord::Base
   end
 
   def set_preferences(preferences_array)
+    self.clear_preferences
     preferences_array.each do |preference|
       self.preferences.create(tag_id: Tag.find_by(sku: preference).id)
     end
+  end
+
+  def clear_preferences
+    if self.preferences then self.preferences.destroy_all end
   end
 
   def update_preferences

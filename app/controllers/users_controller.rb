@@ -13,8 +13,6 @@ class UsersController < ApplicationController
 
   def set_preferences
     @user = current_user
-    puts "here!"
-    p @user
     if !params[:preferences]
       render :json => { errors: ['please select at least one option to continue'] }
     elsif params[:preferences]

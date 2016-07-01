@@ -54,8 +54,6 @@ var UpdateUserPreferences = React.createClass({
       if (response.errors) {
         this.setState({ errors: response.errors })
       } else {
-        console.log(response.userPreferences)
-        console.log('handleFormSubmit ressponse')
         this.props.onAction('user-show', {userPreferences: response.userPreferences})
       }
     }.bind(this))
