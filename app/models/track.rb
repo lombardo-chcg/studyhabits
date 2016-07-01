@@ -5,7 +5,11 @@ class Track < ActiveRecord::Base
 
   def self.get_content(tag)
     tracks = []
-    taggings = Tagging.where(tag_id: Tag.find(tag.id))
+    if tag.sku == 'no_preferences'
+      taggings = Tagging.where(tag_id: (1..(Tag.all.length-1)))
+    else
+      taggings = Tagging.where(tag_id: Tag.find(tag.id))
+    end  
     taggings.each do |tagging|
       tracks << tagging.track
     end

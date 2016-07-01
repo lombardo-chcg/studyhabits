@@ -40,43 +40,24 @@ var Theater = React.createClass({
 
   playVideo: function() {
     if (this.state.playlist != undefined) {
-      console.log('inside if for playvideo')
       counter = this.state.videoCounter;
       if (this.state.playlist[counter] === undefined) {
-        this.getContent();
-      } else {
-        console.log(counter)
-        this.setState({
-            currentVideoUrl: this.state.playlist[counter].url,
-            currentVideoTitle: this.state.playlist[counter].title,
-            currentVideoDuration: (this.state.playlist[counter].duration * 1050),
-            videoCounter: 0
-        });
-        this.startVideoTimer();
+        counter = 0
+        this.setState({videoCounter: 0})
       }
+      this.setState({
+          currentVideoUrl: this.state.playlist[counter].url,
+          currentVideoTitle: this.state.playlist[counter].title,
+          currentVideoDuration: (this.state.playlist[counter].duration * 1050),
+      }, this.startVideoTimer());
     }
   },
 
-  // playVideo: function() {
-  //   if (this.state.playlist != undefined) {
-  //     console.log('inside if for playvideo')
-  //     counter = this.state.videoCounter;
-//       this.setState({
-//           currentVideoUrl: this.state.playlist[counter].url,
-//           currentVideoTitle: this.state.playlist[counter].title,
-//           currentVideoDuration: (this.state.playlist[counter].duration * 1050),
-//           videoCounter: 0
-//       });
-//       this.startVideoTimer();
-  //   }
-  // },
-
   startVideoTimer: function() {
     if (this.state.playlist != undefined) {
-      console.log('inside if for start vid time')
       counter = this.state.videoCounter;
       var loadNextVideo = function() {
-        this.setState({videoCounter: (this.state.videoCounter + 1)})
+
         this.playVideo()
       }.bind(this);
       this.videoTimeout = setTimeout(loadNextVideo, this.state.currentVideoDuration);
@@ -93,11 +74,16 @@ var Theater = React.createClass({
   },
 
   skipVideo: function() {
-    console.log(' hi from skippy'    )
-    this.setState({
-      videoCounter: (this.state.videoCounter + 1)},
-      this.playVideo()
-    );
+    if (this.state.videoCounter === this.state.playlist.length ) {
+      console.log('this.state.videoCounter === this.state.playlist.length')
+      this.setState({
+        videoCounter: 0},
+        this.playVideo()
+      );
+    } else {
+      console.log('else')
+      this.setState({videoCounter: (this.state.videoCounter + 1)}, this.playVideo());
+    }
   },
 
   goBack: function() {
@@ -108,6 +94,12 @@ var Theater = React.createClass({
     clearTimeout(this.videoTimeout)
     clearTimeout(this.redirectTimeout)
     this.props.onAction('user-show')
+  },
+
+  showSkipButton: function() {
+    if (this.state.playlist.length > 1) {
+      return <a onClick={this.skipVideo}><SubmitButton text={'skip this video'} /></a>
+    }
   },
 
   render: function() {
@@ -129,8 +121,8 @@ var Theater = React.createClass({
           </div>
           <p>Session theme: {this.state.currentSessionTheme}</p>
           <p>{this.state.currentVideoTitle}</p>
-          <a onClick={this.skipVideo}><SubmitButton text={'skip this video'} /></a>
-          <a onClick={this.goBack}><SubmitButton text={'stop and go back'} /></a>
+          {this.showSkipButton()}
+          <a onClick={this.goBack}><SubmitButton text={'end session'} /></a>
           <br />  <br />  <br />  <br />
             <div id='timer'></div>
         </div>
