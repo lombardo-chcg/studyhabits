@@ -1,3 +1,12 @@
+TO DO
+# user can add favings
+# add content
+# figure out delay in loading for content
+# user stats
+# better timer
+# css
+
+
 Cool Things I Learned
 ## How to validate email accounts in Ruby
 * * complex regex?  nah.  just send them an email

@@ -1,12 +1,13 @@
 class User < ActiveRecord::Base
   has_many :favings
+  has_many :favs, through: :favings
   has_many :preferences
   has_many :preferred_tags, through: :preferences, source: :tag
 
   has_secure_password
+
   before_save   :downcase_email
   before_create :create_activation_token
-
   validates :username, :email, { presence: true, uniqueness: true }
 
   def get_token
