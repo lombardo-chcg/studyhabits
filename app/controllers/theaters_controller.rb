@@ -13,7 +13,7 @@ class TheatersController < ApplicationController
 
     def make_YT_embed_url(videoId)
       embed_url = 'https://www.youtube.com/embed/'
-      # embed_preferences = '&amp;controls=0&amp;showinfo=0&autoplay=1'
+      embed_preferences = '?controls=0?showinfo=0'
       autoplay = '?autoplay=1'
       # embed_url + videoId + embed_preferences
       embed_url + videoId + autoplay
