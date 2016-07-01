@@ -11,5 +11,5 @@ Rails.application.routes.draw do
 
   resources :account_activations, only: [:edit]
 
-  get '/theaters/serve' => 'theaters#serve'
+  post '/theaters/serve' => 'theaters#serve'
 end

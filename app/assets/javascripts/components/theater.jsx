@@ -7,6 +7,7 @@ var Theater = React.createClass({
       currentVideoUrl: undefined,
       currentVideoDuration: undefined,
       currentVideoTitle: undefined,
+      currentSessionTheme: undefined
     }
   },
 
@@ -21,13 +22,16 @@ var Theater = React.createClass({
   getContent: function() {
     var request = $.ajax({
       url: '/theaters/serve',
-      type: 'get'
+      type: 'post',
+      data: {session_length: this.props.studyInterval}
     });
     request.done(function(response) {
       if (response.errors) {
         this.setState({ errors: response.errors })
       } else {
-        this.setState({ playlist: response.playlistData })
+        this.setState({
+          playlist: response.playlistData,
+          currentSessionTheme: response.currentSessionTheme})
         $('#timer').animate({ width: '100%'}, this.props.studyInterval)
         this.playVideo()
       }
@@ -38,14 +42,34 @@ var Theater = React.createClass({
     if (this.state.playlist != undefined) {
       console.log('inside if for playvideo')
       counter = this.state.videoCounter;
-      this.setState({
-          currentVideoUrl: this.state.playlist[counter].url,
-          currentVideoTitle: this.state.playlist[counter].title,
-          currentVideoDuration: (this.state.playlist[counter].duration * 1050)
-      });
-      this.startVideoTimer();
+      if (this.state.playlist[counter] === undefined) {
+        this.getContent();
+      } else {
+        console.log(counter)
+        this.setState({
+            currentVideoUrl: this.state.playlist[counter].url,
+            currentVideoTitle: this.state.playlist[counter].title,
+            currentVideoDuration: (this.state.playlist[counter].duration * 1050),
+            videoCounter: 0
+        });
+        this.startVideoTimer();
+      }
     }
   },
+
+  // playVideo: function() {
+  //   if (this.state.playlist != undefined) {
+  //     console.log('inside if for playvideo')
+  //     counter = this.state.videoCounter;
+//       this.setState({
+//           currentVideoUrl: this.state.playlist[counter].url,
+//           currentVideoTitle: this.state.playlist[counter].title,
+//           currentVideoDuration: (this.state.playlist[counter].duration * 1050),
+//           videoCounter: 0
+//       });
+//       this.startVideoTimer();
+  //   }
+  // },
 
   startVideoTimer: function() {
     if (this.state.playlist != undefined) {
@@ -72,7 +96,7 @@ var Theater = React.createClass({
     console.log(' hi from skippy'    )
     this.setState({
       videoCounter: (this.state.videoCounter + 1)},
-      this.playVideo
+      this.playVideo()
     );
   },
 
@@ -90,7 +114,7 @@ var Theater = React.createClass({
     if (this.state.playlist.length === 0) {
       return <div>
         <ShapesSpinner />
-        <p>fetching you some awesome content...this might take a moment.</p>
+        <p>Scraping the internet to bring you the best content...this might take a moment.</p>
       </div>
     } else {
       return (
@@ -103,8 +127,8 @@ var Theater = React.createClass({
               </iframe>
             </div>
           </div>
+          <p>Session theme: {this.state.currentSessionTheme}</p>
           <p>{this.state.currentVideoTitle}</p>
-          <p>{this.state.currentVideoDuration}</p>
           <a onClick={this.skipVideo}><SubmitButton text={'skip this video'} /></a>
           <a onClick={this.goBack}><SubmitButton text={'stop and go back'} /></a>
           <br />  <br />  <br />  <br />
