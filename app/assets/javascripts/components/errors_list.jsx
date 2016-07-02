@@ -5,7 +5,7 @@ var ErrorsList = React.createClass({
 
   renderList: function() {
     if (this.props.errors.length < 1) {
-      return <div></div>
+      return <span id='no-display'></span>
     } else {
       var children = [];
       for (var index in this.props.errors) {

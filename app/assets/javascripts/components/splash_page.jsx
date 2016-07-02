@@ -5,23 +5,19 @@ var SplashPage = React.createClass({
       }
   },
 
-  onAction: function() {
-      this.props.onAction('register')
+  handleClick: function(destination) {
+      this.props.onAction(destination)
   },
 
   render: function() {
     return (
       <div className="splash-page">
-        <h1> Study Habits</h1>
-        <h3>Audio for concentration</h3>
-        <div className="input-field col s8">
-          <ErrorsList errors={this.state.errors} />
-        </div>
+        <h2> <i className="material-icons splash-icon">headset</i> </h2>
+        <h4>audio for concentration</h4>
 
-        <p>please login to continue</p>
         <LoginForm onAction={this.props.onAction} />
-        <br />
-        <SubmitButton text={"register for an account"} onAction={this.onAction} />
+
+        <a text={"register for an account"} onClick={this.handleClick.bind(null, 'register')}> register for an account</a>
       </div>
     )
   }

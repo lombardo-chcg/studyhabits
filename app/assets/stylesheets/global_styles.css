@@ -30,6 +30,19 @@ html {
   cursor: pointer;
 }
 
-.splash-page {
+.splash-page, .register-page, .login-page {
   text-align: center;
+}
+
+
+.splash-icon {
+  font-size: 4em;
+}
+
+#no-display {
+  display: none;
+}
+
+.forgot-password {
+  font-size: .75em;
 }

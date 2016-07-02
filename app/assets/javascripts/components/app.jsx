@@ -31,7 +31,7 @@ var App = React.createClass({
       case 'register':
         return <Register onAction={this.changeView} />
       case 'post-registration':
-        return <PostRegistration />
+        return <PostRegistration onAction={this.changeView} />
       case 'enterTheaterForm':
         return <EnterTheaterForm
           onAction={this.changeView}
