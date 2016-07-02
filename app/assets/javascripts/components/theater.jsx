@@ -105,7 +105,7 @@ var Theater = React.createClass({
   render: function() {
     if (this.state.playlist.length === 0) {
       return <div>
-        <ShapesSpinner />
+        <LoadingSpinner />
         <p>Scraping the internet to bring you the best content...this might take a moment.</p>
       </div>
     } else {
@@ -124,7 +124,10 @@ var Theater = React.createClass({
           {this.showSkipButton()}
           <a onClick={this.goBack}><SubmitButton text={'end session'} /></a>
           <br />  <br />  <br />  <br />
-            <div id='timer'></div>
+            <div id='timer-container'>
+              <p>session progress</p>
+              <div id='timer'></div>
+            </div>
         </div>
       )
     }

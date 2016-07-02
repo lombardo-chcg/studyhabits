@@ -25,9 +25,9 @@ var NavBar = React.createClass({
 
   render: function() {
     return (
-      <nav>
-        <div className="nav-wrapper">
-          <a onClick={this.handleClick.bind(null, "splash")} className="brand-logo">Study Habits </a>
+      <nav className='teal lighten-2'>
+        <div className="nav-wrapper container">
+          <a onClick={this.handleClick.bind(null, "splash")} className="brand-logo">study habits </a>
           <a data-activates="mobile-demo" className="button-collapse"><i className="material-icons">menu</i></a>
           <ul className="right hide-on-med-and-down">
             {this.showNavBar()}

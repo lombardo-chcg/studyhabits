@@ -13,8 +13,20 @@ var UserShow = React.createClass({
   render: function() {
     return (
       <div>
-        welcome {this.props.userName}
-        {this.userPreferences()}
+        <h2 className='center-align'>welcome {this.props.userName}</h2>
+          <div className="row">
+
+            <div className="col s12 m12 l4">
+              {this.userPreferences()}
+            </div>
+            <div className="col s12 m12 l4">
+              <h4 className="center-align">your favorites</h4>
+            </div>
+            <div className="col s12 m12 l4">
+              <h4 className="center-align">your stats</h4>
+            </div>
+
+          </div>
       </div>
     )
   }

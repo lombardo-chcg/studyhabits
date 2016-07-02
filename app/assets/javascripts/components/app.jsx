@@ -18,7 +18,14 @@ var App = React.createClass({
   showContent: function() {
     switch (this.state.view) {
       case 'splash':
-        return <SplashPage onAction={this.changeView} />
+        if (this.state.userLoggedIn) {
+          return <UserShow
+            onAction={this.changeView}
+            userName={this.state.userName}
+            userPreferences={this.state.userPreferences} />
+        } else {
+          return <SplashPage onAction={this.changeView} />
+        }
       case 'login':
         return <Login onAction={this.changeView} />
       case 'register':
@@ -52,7 +59,7 @@ var App = React.createClass({
 
   logout: function() {
     this.logoutServer();
-    window.location.href = "http://localhost:3000";
+    window.location.href = "http://studyhabits.herokuapp.com/";
   },
 
   logoutServer: function() {
@@ -70,7 +77,9 @@ var App = React.createClass({
           userName={this.state.userName}
           userLoggedIn={this.state.userLoggedIn}
         />
-        {this.showContent()}
+        <div className="container">
+          {this.showContent()}
+        </div>
       </div>
     )
   }
