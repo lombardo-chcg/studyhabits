@@ -4843,7 +4843,7 @@ small {
   will-change: transform, opacity;
 }
 
-.btn, .btn-large,
+/*.btn, .btn-large,
 .btn-flat {
   border: none;
   border-radius: 2px;
@@ -4855,7 +4855,7 @@ small {
   text-transform: uppercase;
   vertical-align: middle;
   -webkit-tap-highlight-color: transparent;
-}
+}*/
 
 .btn.disabled, .disabled.btn-large,
 .btn-floating.disabled,
@@ -4896,7 +4896,7 @@ small {
   line-height: inherit;
 }
 
-.btn, .btn-large {
+/*.btn, .btn-large {
   text-decoration: none;
   color: #fff;
   background-color: #26a69a;
@@ -4904,7 +4904,7 @@ small {
   letter-spacing: .5px;
   transition: .2s ease-out;
   cursor: pointer;
-}
+}*/
 
 .btn:hover, .btn-large:hover {
   background-color: #2bbbad;

@@ -1,8 +1,21 @@
+#timer-container {
+  position: relative;
+  margin: auto;
+  width: 50%
+  border: 1px solid grey;
+  border-radius: 20px;
+  background-color: grey;
+  color: white;
+  padding-left: 5%
+}
+
 #timer {
   position: absolute;
   height: 20px;
   width: 10px;
   background-color: #FF0DFF;
+  opacity: 0.5;
   left: 0;
-  border-radius: 1px;
+  top: 0;
+  border-radius: 20px;
 }

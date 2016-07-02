@@ -16,8 +16,8 @@ var ShowUserPreferences = React.createClass({
   render: function() {
     return (
       <div>
-        <h3>Your current Preferences</h3>
-        <a onClick={this.handleClick.bind(null, "updateUserPreferences")}>update</a>
+        <h4 className='center-align'>Your current Preferences</h4>
+        <p className='center-align'><a onClick={this.handleClick.bind(null, "updateUserPreferences")}>update</a></p>
         <PreferenceList userPreferences={this.state.userPreferences}/>
       </div>
     )
