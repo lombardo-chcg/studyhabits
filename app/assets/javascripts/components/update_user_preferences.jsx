@@ -75,9 +75,14 @@ var UpdateUserPreferences = React.createClass({
     } else {
       return (
         <div>
+          <div className='update-pref-heading'>
+            <h3>your preferences</h3>
+            <p>use this form to select your preferred study sounds</p>
+            <p>select "skip this step" and we will provide you with random audio selections</p>
+          </div>
           <form onSubmit={this.handleFormSubmit}>
             {this.generateUpdatePreferenceForm()}
-            <SubmitButton text={"submit my wonderful preferences"} />
+            <SubmitButton text={"submit my preferences"} />
           </form>
         </div>
       )

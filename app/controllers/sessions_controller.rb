@@ -12,8 +12,7 @@ class SessionsController < ApplicationController
      render :json => { errors:
                         ['your account has not been activated!
                           please check your email and click on
-                          the link.  we just resent the email
-                          for your convenience.'] }
+                          the link.  we just resent the email.'] }
   #  elsif @user && @user.activated? && @user.authenticate(params[:password])
     elsif user_activated_and_password_valid?(@user, params[:password])
      session[:user_id] = @user.id

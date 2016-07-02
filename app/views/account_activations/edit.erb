@@ -1,1 +1,13 @@
-<%= react_component('EmailValidated', {name: 'John'}, {prerender: true}) %>
+<div class="row">
+  <div class="col s12 m6 offset-m3">
+    <div class="card teal darken-1">
+      <div class="card-content white-text">
+        <span class="card-title">hey <%= @user.username %></span>
+        <p>success!  account validated.  please proceed to login page</p>
+      </div>
+      <div class="card-action">
+        <a href='http://studyhabits.herokuapp.com/'>log in now</a>
+      </div>
+    </div>
+  </div>
+</div>

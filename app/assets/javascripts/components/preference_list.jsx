@@ -3,7 +3,7 @@ var PreferenceList = React.createClass({
     if (this.props.userPreferences.length > 0) {
       children = []
       this.props.userPreferences.map(function(preference, index) {
-        children.push(<li key={index} className="collection-item">{preference}</li>)
+        children.push(<li key={index} className="collection-item teal lighten-2">{preference}</li>)
       })
       return children
     } else {
@@ -13,7 +13,7 @@ var PreferenceList = React.createClass({
 
   render: function() {
     return (
-      <ul className="collection">
+      <ul className="collection" id='preference-list'>
         {this.renderPreferenceListItems()}
       </ul>
     )

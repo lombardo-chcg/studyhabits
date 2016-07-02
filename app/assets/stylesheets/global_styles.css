@@ -1,3 +1,13 @@
+body {
+  display: flex;
+  min-height: 100vh;
+  flex-direction: column;
+}
+
+main {
+  flex: 1 0 auto;
+}
+
 html {
   line-height: 1.5;
   font-family: 'Poppins', sans-serif;
@@ -34,6 +44,43 @@ html {
   text-align: center;
 }
 
+/*.welcome-user {
+  background-color: #e0e0e0;
+  padding: 1%;
+  border-radius: 20px;
+}*/
+
+.update-pref-heading, .center-text {
+  text-align: center;
+}
+
+.start-study-button {
+  text-align: center;
+  margin-bottom: 3%;
+}
+
+.startSession {
+  background-color: #e0e0e0;
+  border-radius: 20px;
+  min-height: 250px;
+}
+
+.loading-spinner {
+  margin-top: 4%;
+}
+
+.pref-form-header {
+  padding-top: 0px;
+  padding-bottom: 0px;
+}
+
+#preference-list {
+  color: white;
+}
+
+.enterTheaterForm, .theater-container {
+  padding-top: 2%;
+}
 
 .splash-icon {
   font-size: 4em;
@@ -45,4 +92,15 @@ html {
 
 .forgot-password {
   font-size: .75em;
+}
+
+#footer-img {
+    height: 50px;
+    width: 50px;
+}
+
+footer.page-footer {
+  margin-top: 20px;
+  padding-top: 20px;
+  background-color: #4DB6AC;
 }

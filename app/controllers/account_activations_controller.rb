@@ -1,12 +1,12 @@
 class AccountActivationsController < ApplicationController
 
   def edit
-    user = User.find_by(email: params[:email])
-    if user && !user.activated?
-      user.update_attributes(activated: true, activation_datetime: Time.now)
+    @user = User.find_by(email: params[:email])
+    if @user && !@user.activated?
+      @user.update_attributes(activated: true, activation_datetime: Time.now)
       render 'edit'
     else
-      render :json => {errors: ['invalid link']}
+      render :json => {errors: ['whoops. invalid link']}
     end
   end
 

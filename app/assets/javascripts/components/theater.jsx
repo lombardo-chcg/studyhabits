@@ -104,30 +104,41 @@ var Theater = React.createClass({
 
   render: function() {
     if (this.state.playlist.length === 0) {
-      return <div>
-        <LoadingSpinner />
-        <p>Scraping the internet to bring you the best content...this might take a moment.</p>
+      return <div className="row loading-spinner">
+        <div className="col s6 offset-s3">
+          <LoadingSpinner />
+          <p>scraping the internet to bring you the best content...this might take a moment.</p>
+        </div>
       </div>
     } else {
       return (
-        <div className="row">
-          <div className="col s3">
-            <div className="video-container">
-              <iframe width="100"
-                      height="100"
-                      src={this.state.currentVideoUrl}>
-              </iframe>
+        <div>
+          <div className="row theater-container">
+            <div className="col s12 m4">
+              <div className="video-container">
+                <iframe width="250"
+                        height="250"
+                        src={this.state.currentVideoUrl}>
+                </iframe>
+              </div>
+            </div>
+
+            <div className="col s12 m8">
+              <p>session theme: {this.state.currentSessionTheme}</p>
+              <p>{this.state.currentVideoTitle}</p>
+              {this.showSkipButton()}
+              <a onClick={this.goBack}><SubmitButton text={'end session'} /></a>
+              <br />  <br />  <br />
             </div>
           </div>
-          <p>Session theme: {this.state.currentSessionTheme}</p>
-          <p>{this.state.currentVideoTitle}</p>
-          {this.showSkipButton()}
-          <a onClick={this.goBack}><SubmitButton text={'end session'} /></a>
-          <br />  <br />  <br />  <br />
+
+          <div className="row">
             <div id='timer-container'>
               <p>session progress</p>
               <div id='timer'></div>
             </div>
+          </div>
+
         </div>
       )
     }

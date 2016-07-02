@@ -11,11 +11,14 @@ var App = React.createClass({
   },
 
   changeView: function(newView, options = {}) {
-    this.setState(options);
-    this.setState({view: newView});
+    $(".app").fadeOut('fast', function() {
+      this.setState(options);
+      this.setState({view: newView});
+    }.bind(this))
   },
 
   showContent: function() {
+    $(".app").fadeIn('slow')
     switch (this.state.view) {
       case 'splash':
         if (this.state.userLoggedIn) {
@@ -80,6 +83,7 @@ var App = React.createClass({
         <div className="container">
           {this.showContent()}
         </div>
+        <Footer />
       </div>
     )
   }
