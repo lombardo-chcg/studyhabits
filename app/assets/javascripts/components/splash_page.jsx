@@ -11,7 +11,7 @@ var SplashPage = React.createClass({
 
   render: function() {
     return (
-      <div>
+      <div className="splash-page">
         <h1> Study Habits</h1>
         <h3>Audio for concentration</h3>
         <div className="input-field col s8">
@@ -20,7 +20,8 @@ var SplashPage = React.createClass({
 
         <p>please login to continue</p>
         <LoginForm onAction={this.props.onAction} />
-        <CreateAccountButton onAction={this.onAction} />
+        <br />
+        <SubmitButton text={"register for an account"} onAction={this.onAction} />
       </div>
     )
   }

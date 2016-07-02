@@ -29,3 +29,7 @@ html {
   transition: .2s ease-out;
   cursor: pointer;
 }
+
+.splash-page {
+  text-align: center;
+}

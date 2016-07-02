@@ -48,7 +48,7 @@ var LoginForm = React.createClass ({
               <label htmlFor="password">Password</label>
               </div>
           </div>
-
+          <p className='right-align'><a>forgot your password?</a></p>
           <SubmitButton text="login"/>
         </form>
       </div>

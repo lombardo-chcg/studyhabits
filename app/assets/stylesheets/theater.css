@@ -1,11 +1,9 @@
 #timer-container {
   position: relative;
   margin: auto;
-  width: 50%
-  border: 1px solid grey;
-  border-radius: 20px;
-  background-color: grey;
-  color: white;
+  border-radius: 10px;
+  background-color: #e0e0e0;
+  color: black;
   padding-left: 5%
 }
 
@@ -13,7 +11,7 @@
   position: absolute;
   height: 20px;
   width: 10px;
-  background-color: #FF0DFF;
+  background-color: #6CFF9E;
   opacity: 0.5;
   left: 0;
   top: 0;
