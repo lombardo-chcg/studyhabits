@@ -1,7 +1,5 @@
 TO DO
 # user can add favings
-# add content
-# figure out delay in loading for content
 # user stats
 # better timer
 # css

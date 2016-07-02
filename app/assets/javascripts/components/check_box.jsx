@@ -29,7 +29,7 @@ var CheckBox = React.createClass({
               onChange={this.handleCheckboxChange}
               checked={this.state.isChecked}
             />
-            <label htmlFor={this.props.tag}>{this.props.label}</label>
+          <label className="black-text" htmlFor={this.props.tag}>{this.props.label}</label>
           </div>
         );
     }

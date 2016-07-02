@@ -26,8 +26,8 @@ var UpdateUserPreferences = React.createClass({
       children.push(
         <div key={counter} className="row">
           <div className="col s12 m12">
-            <div className="card light-blue darken-1">
-              <div className="card-content white-text">
+            <div className="card grey lighten-2">
+              <div className="card-content black-text">
                 <span className="card-title">{index}</span>
                 <br />
                 {this.giveMeListItems(this.state.userPreferences[index])}
