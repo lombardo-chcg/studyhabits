@@ -78,7 +78,9 @@ var UpdateUserPreferences = React.createClass({
           <div className='update-pref-heading'>
             <h3>your preferences</h3>
             <p>use this form to select your preferred study sounds</p>
-            <p>select "skip this step" and we will provide you with random audio selections</p>
+            <div className="no-preferences-alert red accent-1 z-depth-1">
+              <p>please note: select "no preferences" and we will provide you with random audio selections</p>
+            </div>
           </div>
           <form onSubmit={this.handleFormSubmit}>
             {this.generateUpdatePreferenceForm()}

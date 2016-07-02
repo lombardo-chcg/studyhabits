@@ -11,14 +11,14 @@ var App = React.createClass({
   },
 
   changeView: function(newView, options = {}) {
-    $(".app").fadeOut('fast', function() {
+    $(".app").fadeOut(500, function() {
       this.setState(options);
       this.setState({view: newView});
     }.bind(this))
   },
 
   showContent: function() {
-    $(".app").fadeIn('slow')
+    $(".app").fadeIn(500)
     switch (this.state.view) {
       case 'splash':
         if (this.state.userLoggedIn) {
@@ -53,8 +53,10 @@ var App = React.createClass({
           onAction={this.changeView}
           userId={this.state.userId}
           userPreferences={this.state.userPreferences} />
-        case "updateUserPreferences":
+      case "updateUserPreferences":
         return <UpdateUserPreferences onAction={this.changeView} />
+      case 'about':
+        return <About onAction={this.changeView} />
       case "logout":
         this.logout()
     }
@@ -75,14 +77,18 @@ var App = React.createClass({
   render: function() {
     return (
       <div>
-        <NavBar
-          onAction={this.changeView}
-          userName={this.state.userName}
-          userLoggedIn={this.state.userLoggedIn}
-        />
-        <div className="container">
-          {this.showContent()}
-        </div>
+        <header>
+          <NavBar
+            onAction={this.changeView}
+            userName={this.state.userName}
+            userLoggedIn={this.state.userLoggedIn}
+            />
+        </header>
+        <main>
+          <div className="container">
+            {this.showContent()}
+          </div>
+        </main>
         <Footer />
       </div>
     )

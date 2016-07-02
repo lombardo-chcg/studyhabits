@@ -1,11 +1,11 @@
 body {
   display: flex;
-  min-height: 100vh;
   flex-direction: column;
 }
 
 main {
-  flex: 1 0 auto;
+  min-height: 70vh;
+  /*flex: 1 0 auto;*/
 }
 
 html {
@@ -13,6 +13,23 @@ html {
   font-family: 'Poppins', sans-serif;
   font-weight: normal;
   color: rgba(0, 0, 0, 0.87);
+}
+
+.about-section {
+  margin-top: 1%;
+}
+
+.no-preferences-alert {
+  font-style: italic;
+  padding: 1%;
+  width: 75%;
+  margin: 0 auto 2% auto;
+  border-radius: 20px;
+  color: white;
+}
+
+.about-section h5 {
+  color: #4DB6AC;
 }
 
 .btn, .btn-large,
@@ -94,13 +111,25 @@ html {
   font-size: .75em;
 }
 
-#footer-img {
+.github-icon {
+    display: block;
     height: 50px;
     width: 50px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 1%;
 }
 
 footer.page-footer {
   margin-top: 20px;
   padding-top: 20px;
   background-color: #4DB6AC;
+}
+
+footer.page-footer .footer-copyright {
+  overflow: hidden;
+  height: 50px;
+  line-height: 50px;
+  color: rgba(255, 255, 255, 0.8);
+  background-color: rgba(51, 51, 51, 0.08);
 }

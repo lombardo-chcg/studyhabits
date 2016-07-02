@@ -10,6 +10,7 @@ var NavBar = React.createClass({
         <div>
           <li><a onClick={this.handleClick.bind(null, "user-show")}>profile</a></li>
           <li><a onClick={this.handleClick.bind(null, "enterTheaterForm")}>new study session</a></li>
+          <li><a onClick={this.handleClick.bind(null, "about")}>about</a></li>
           <li><a onClick={this.handleClick.bind(null, "logout")}>logout</a></li>
         </div>
       )
@@ -18,6 +19,7 @@ var NavBar = React.createClass({
         <div>
           <li><a onClick={this.handleClick.bind(null, "login")}>login</a></li>
           <li><a onClick={this.handleClick.bind(null, "register")}>register</a></li>
+          <li><a onClick={this.handleClick.bind(null, "about")}>about</a></li>
         </div>
       )
     }
