@@ -1,4 +1,7 @@
 # Study Habits
+![Travis Build](https://travis-ci.org/lombardo-chcg/studyhabits.svg?branch=matchers "Travis Build")
+
+[See it live on Heroku](http://studyhabits.herokuapp.com/)
 
 This app combines the focused study idea of the Pomodoro technique with the concept of "background sounds" to increase concentration.  Users can create an account, set their preferences, and enter a time.  Users are then provided with background sounds for the requested amount of time.
 
