@@ -2,7 +2,6 @@ TO DO
 # user can add favings
 # user stats
 # better timer
-# css
 
 
 Cool Things I Learned

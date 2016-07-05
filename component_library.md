@@ -1,24 +1,15 @@
-## User Stories
-* user registers
-* user activates account
-* user logs in
-* user can view and edit profile
-* user can set preferences for their favorite genres
-* user can edit their preferences
-* user can "favorite" a song they like and view their past favorites
-
-* user enters a time block and is provided with music for that length of time
-* while in theater, user has access to some kind of timer that shows time remaining
-
 ## Views & Components
 * Register (create user)
 * * register form
+* Post-registration click page
 * Login (session new)
 * * login form
 * Set Preferences
 * * preferences selection
 * Profile (show user)
 * Theater
+* Edit Preferences
+* About
 
 ## Component Library
 
